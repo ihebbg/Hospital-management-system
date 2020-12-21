@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <title>Home</title>
+</head>
+<style>
+*{
+  margin: 0;
+  padding: 0;
+}
+h4:after {    
+  background: none repeat scroll 0 0 transparent;
+  bottom: 0;
+  content: "";
+  display: block;
+  height: 2px;
+  left: 50%;
+  position: absolute;
+  background: rgb(235, 3, 3);
+  transition: width 0.3s ease 0s, left 0.3s ease 0s;
+  width: 0;
+}
+h4:hover:after { 
+  width: 100%; 
+  left: 0; 
+}
+.navbar{
+    background-color: #374767;
+    width: 100%;    
+    position: fixed;
+    height: 6%;
+    top: 0;
+}
+#title{
+    color:aqua;
+}
+h3{
+    color: rgb(255, 255, 255);
+}
+
+#span{
+    font-family: 'Comic Neue', cursive;
+    font-size: 20px;
+}
+body {
+    background-color: rgb(255, 255, 255); 
+}
+.main-sidebar {
+    position: fixed;
+    left: 0;
+    top: 6%;
+    height: 100%;
+    width: 12%;
+    background-color:rgb(51, 58, 66);
+}
+a{
+     color: white;
+}
+h6{
+    color: white;
+}
+a:hover{    
+    color: rgb(191, 210, 221);
+}
+.img{
+    height: 70px;
+    background-color: #009688;;
+    }
+p{
+    font-size: 15px;
+    color: black;
+    font-weight: 600;
+    font-style: italic;
+ }
+.list-group{
+  list-style-type: none;
+font-size: medium;
+letter-spacing: 0.2em;
+font-weight: 500;
+}
+.log-out{
+  position: fixed;
+  bottom: 0;
+}
+a:hover{
+color: aqua;
+text-decoration: none;
+}
+.list-group> a:hover{
+  transform: scale(1.1); 
+}
+.card-counter{
+    box-shadow: 2px 2px 10px black;
+    margin: 5px;
+    padding: 20px 10px;
+    background-color: rgb(255, 255, 255);
+    height: 100px;
+    border-radius: 5px;
+    transition: .3s linear all;
+  }
+
+  .card-counter:hover{
+    box-shadow: 4px 4px 20px #DADADA;
+    transition: .3s linear all;
+  }
+
+  .card-counter.primary{
+    background-color: #007bff;
+    color: white;
+    height: 130px;
+    width: 230px;
+
+  }
+
+  .card-counter.danger{
+    background-color: #ef5350;
+    color: white;
+    height: 130px;
+    width: 230px;
+
+
+  }  
+
+  .card-counter.success{
+    background-color: #66bb6a;
+    color: white;
+    height: 130px;
+    width: 230px;
+
+
+  }  
+  .card-counter.info{
+    background-color: #26c6da;
+    color:white;
+    height: 130px;
+    width: 230px;
+  }  
+  .card-counter.color1{
+    background-color: blueviolet;
+    color: white;
+    height: 130px;
+    width: 230px;
+  } 
+  .card-counter.color2{
+    background-color: cadetblue;
+    color: white;
+    height: 130px;
+    width: 230px;
+  } 
+
+  .card-counter i{
+    font-size: 6em;
+    opacity: 0.2;
+  }
+  .card-counter .count-numbers{
+    position: absolute;
+    right: 50px;
+    top: 20px;
+    font-size: 32px;
+    display: block;
+  }
+  .card-counter .count-name{
+    position: absolute;
+    right: 40px;
+    top: 65px;
+    font-style: italic;
+    text-transform: capitalize;
+    opacity: 0.5;
+    display: block;
+    font-size: 20px;
+  }
+</style>
+<body>
+
+  <header class="navbar">
+        <h3> <span id="title"> Hospital</span> Managment</h3>
+        <form class="form-inline md-form mr-auto mb-4" style="position: absolute; right: 0%;">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-warning btn-rounded btn-sm my-0" type="submit">Search</button>
+          </form>
+</header>
+
+
+<!-- aside bar left-->
+<aside class="main-sidebar" style="display: flex; flex-direction: column;">
+    
+   <div class="img">
+       <center>
+          <img src="{{ url_for('static', filename='admino.png')}}" height="50px" width="50px" >
+          <p>  <span style="color: white;"> Welcome</span></p>
+       </center>
+   </div>
+     <br>
+      <a href="/home"><i class="fa fa-home fa-fw" aria-hidden="true"></i> Home </a> 
+      <br> <br>
+      <a href="/home/profile"> <i class="far fa-user-circle" aria-hidden="true"> </i> Profile</button></a>
+      <br><br><br> <br>
+    <div class ="list-group" style="margin-left: 10px;">
+        <a href=" /home/list_doctors"><i class="fa fa-user-md"></i> Doctors </a>
+            <br><br>
+            <a href=" /home/list_nurses"> <i class='fas fa-user-nurse'></i> Nurses </a>
+            <br> <br>
+            <a href=" /home/list_pharmacist"> <i class="fas fa-pills"></i> Pharmacists </a>
+            <br> <br>
+            <a href="/home/list_patients"> <i class="fa fa-wheelchair"></i> Patients</a>
+            <br><br>
+            <a href="/home/list_departements"><i class="fas fa-building"></i> Departments</a>
+            <br><br>
+            <a href="/home/list_appointments"> <i class="fa fa-hospital-o"></i> Appointments</a>
+    </div>
+
+
+    <div class="log-out">
+         <a href="/logout" onclick=" return confirm('Are you Sure To Log Out?')"><i class="fa fa-sign-out" style="font-size:48px;color:red"></i></a>
+    </div>
+</aside>
+<div > 
+ <h4 style="position: absolute; left: 15%; top: 10%; font-weight: 800; font-family: 'Satisfy', cursive;;"> <img src="https://img.icons8.com/dotty/80/000000/combo-chart.png"  width="25px" height="25px"/>  Dashboard </h4>
+<h5 style="position: absolute; right: 3%; top: 10%; font-weight: 500; "><img src="https://img.icons8.com/wired/64/000000/timetable.png" width="25px" height="25px"/> {{td}}</h5>
+</h4>
+</div>
+   
+<div class="container" style="top: 20%; left: 20%; position: absolute;">
+   
+    <div class="row" style="display: flex; justify-content: space-around;">
+    <div class="col-md-3">
+      <div class="card-counter primary">
+        <img  src="{{ url_for('static', filename='doctor.png')}}"height="110%" width="60%" >
+        <span class="count-numbers"> {{nbd}}</span>
+        <span class="count-name">Doctors</span>
+      </div>
+    </div>
+            
+    <div class="col-md-3">
+      <div class="card-counter danger">
+        <img src="{{ url_for('static', filename='patient.png')}}"height="120%" width="60%">
+        <span class="count-numbers">{{nbp}}</span>
+        <span class="count-name">Patients</span>
+      </div>
+    </div>
+    </div>
+    <br> <br>
+    <div class="row" style="display: flex; justify-content: space-around;" >
+    <div class="col-md-3">
+      <div class="card-counter success">
+        <img src="{{ url_for('static', filename='nurse.png')}}"height="120%" width="60%">
+        <span class="count-numbers">{{nbn}}</span>
+        <span class="count-name">Nurses</span>
+      </div>
+    </div>
+    
+
+    <div class="col-md-3">
+      <div class="card-counter info">
+        <img src="{{ url_for('static', filename='hospital.png')}}"height="100%" width="35%">
+        <span class="count-numbers">{{nba}}</span>
+        <span class="count-name">Appointments</span>
+      </div>
+    </div>
+  </div>
+  <br> <br>
+  <div class="row" style="display: flex; justify-content: space-around;" >
+    <div class="col-md-3" >
+    <div class="card-counter color1">
+      <img src="{{ url_for('static', filename='pharmacist.png')}}"height="100%" width="35%">
+      <span class="count-numbers">{{nbph}}</span>
+      <span class="count-name">Pharmacists</span>
+    </div>
+  </div>
+
+  <div class="col-md-3">
+    <div class="card-counter color2">
+      <img src="{{ url_for('static', filename='department.png')}}"height="100%" width="35%">
+      <span class="count-numbers">{{nb_d}}</span>
+      <span class="count-name">Departments</span>
+    </div>
+  </div>
+
+  </div>
+  </div>
+  
+<footer style="position: absolute; bottom: 0%; right: 0%;  width: 88% ; height: 30px; background-color:rgb(36, 36, 36)">
+
+<center><span style="color: white; " >© 2020 Copyright: All Rights Reserved
+</span>
+</center>
+
+</footer>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  </body>
+ 
+</html>

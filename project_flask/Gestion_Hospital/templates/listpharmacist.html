@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <title>List of Pharmacists</title>
+</head>
+<style>
+*{
+  margin: 0;
+  padding: 0;
+}
+.navbar{
+  background-color: #374767;
+    width: 100%;    
+    position: fixed;
+    height: 6%;
+    top: 0;
+    
+}
+#title{
+    color:aqua;
+}
+h3{
+    color: rgb(255, 255, 255);
+}
+.sidebar-menu {
+    margin: 0;
+    padding: 0;
+    background-color: rgb(51, 58, 66);
+    list-style-type: none;
+    font-size: medium;
+    letter-spacing: 0.2em;
+    font-weight: 500;
+  }
+#span{
+    font-family: 'Comic Neue', cursive;
+    font-size: 20px;
+}
+body {
+    background-color: rgb(255, 255, 255); 
+}
+.main-sidebar {
+  position: fixed;
+    left: 0;
+    top: 6%;
+    height: 100%;
+    width: 12%;
+    background-color:rgb(51, 58, 66);
+}
+a{
+     color: white;
+     
+}
+
+h6{
+    color: white;
+}
+a:hover{    
+    color: rgb(191, 210, 221);
+}
+.img{
+    height: 70px;
+    background-color: #009688;;
+    }
+p{
+    font-size: 15px;
+    color: black;
+    font-weight: 600;
+    font-style: italic;
+ }
+.list-group{
+  list-style-type: none;
+font-size: medium;
+letter-spacing: 0.2em;
+font-weight: 500;
+}
+.log-out{
+  position: fixed;
+  bottom: 0;
+}
+a:hover{
+color: aqua;
+text-decoration: none;
+
+}
+.list-group> a:hover{
+  transform: scale(1.1); 
+
+
+}
+</style>
+<body>
+  <header class="navbar">
+            <h3> <span id="title"> Hospital</span> Managment</h3>
+            <form class="form-inline md-form mr-auto mb-4" style="position: absolute; right: 0%;">
+              <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-warning btn-rounded btn-sm my-0" type="submit">Search</button>
+            </form>
+        
+</header>
+
+<!-- aside bar left-->
+<aside class="main-sidebar"  style="display: flex; flex-direction: column;">
+    
+   <div class="img">
+       <center>
+          <img src="{{ url_for('static', filename='admino.png')}}" height="50px" width="50px" >
+          <p>  <span style="color: white;"> Welcome</span></p>
+       </center>
+   </div>
+     <br>
+      <a href="/home"><i class="fa fa-home fa-fw" aria-hidden="true"></i> Home </a> 
+      <br> <br>
+      <a href=""> <i class="far fa-user-circle" aria-hidden="true"> </i> Profile</button></a>
+      <br><br><br> <br>
+    <div class="list-group" style="margin-left: 10px;">
+        <a href=" /home/list_doctors"><i class="fa fa-user-md"></i> Doctors </a>
+            <br><br>
+        <a href=" /home/list_nurses"> <i class='fas fa-user-nurse'></i> Nurses </a>
+        <br> <br>
+        <a href=" /home/list_pharmacist"> <i class="fas fa-pills"></i> Pharmacists </a>
+        <br><br>
+        <a href="/home/list_patients"> <i class="fa fa-wheelchair"></i> Patients</a>
+        <br><br>
+        <a href="/home/list_departements"> <i class="fas fa-building"></i> Departments</a>
+        <br><br>
+        <a href="/home/list_appointments"> <i class="fa fa-hospital-o"></i> Appointments</a>
+    </div>
+
+    <div class="log-out">
+         <a href="/logout" onclick="return confirm('Are you Sure To Log Out?')"><i class="fa fa-sign-out" style="font-size:48px;color:red"></i></a>
+    </div>
+</aside>
+    <hr>
+    <div class="container"  style="margin-top: 10%; margin-left: 20%;">
+      {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+      {% for category, message in messages %}
+        <div style="font-size: medium;" class=" alert alert-{{ category }}  alert-dismissible fade show" role="alert">
+          {{ message }}
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      {% endfor %}
+      {% endif %}
+    {% endwith %}
+    <!-- Table of doctors-->
+        <table class="table  table-bordered table-hover" >
+          <caption style="font-size: medium;"> List of Pharmacists</caption>
+            <thead class="thead-dark" style="font-size: 14px;">
+              <tr>
+                <th >#</th>
+                <th >First Name</th>
+                <th >Last Name</th>
+                <th >Adress</th>
+                <th > Gender</th>   
+                <th > Tel</th>    
+                <th> Operations</th>             
+              </tr>
+            </thead>
+            <tbody>
+              {% for pharmacist in pharmacists %}
+              <tr>
+               <td style="font-size: 15px; font-weight: 400;"> {{pharmacist.id}}</td>
+               <td style="font-size: 15px;font-weight: 400;"> {{pharmacist.first_name_ph}}</td>
+               <td style="font-size: 15px; font-weight: 400;"> {{pharmacist.last_name_ph}}</td>
+               <td style="font-size: 15px; font-weight: 400;"> {{pharmacist.adress_ph}}</td>
+               <td style="font-size: 15px; font-weight: 400;"> {{pharmacist.genre_ph}}</td>
+               <td style="font-size: 15px; font-weight: 400;" > {{pharmacist.tel_p}}</td>
+               <td> <a href="/home/list_pharmacist/{{pharmacist.id}}"  class="btn btn-danger" onclick="return confirm ('Are You Sure To Delete?')"  style="color: white; font-weight: 400; font-size: 12px;"><i class="fas fa-trash-alt"></i> Delete  </a> 
+                <a href="/home/update_pharmacist{{pharmacist.id}}" class="btn btn-warning" data-toggle="modal" style="color: white; font-weight: 400; font-size: 12px;" data-target="#editmodal{{pharmacist.id}}"><i class="fas fa-pencil-alt"></i> Update</a></td>
+              </tr>
+            </tbody>
+            {% endfor %}
+
+            <!-- Edit Modal-doctor -->
+            {% for pharmacist in pharmacists %}
+            <div class="modal fade" id="editmodal{{pharmacist.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Update Pharmacist</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  
+                  <div class="modal-body">
+                    <form method="POST" action="{{url_for('update_pharmacist')}}">
+                      <input type="hidden" name="id" value="{{pharmacist.id}}">
+                      <div class="form-row">
+                        <div class="col-md-5 mb-3">
+                            <label style="font-size: small;" >First Name</label>
+                            <input type="text" class="form-control"  style="font-size: small;" name="first_name_ph" maxlength="50" pattern="[a-zA-Z ]*" minlength="3" value="{{pharmacist.first_name_ph}}"  required>
+                          </div>
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                          <div class="col-md-5 mb-3">
+                            <label  style="font-size: small;">Last Name</label>
+                            <input type="text" class="form-control" style="font-size: small;" name ="last_name_ph" maxlength="50" pattern="[a-zA-Z ]*" minlength="3"  value="{{pharmacist.last_name_ph}}"  required>
+                          </div>
+                      </div>
+                      <div class="form-row">
+                        <div class="col-md-5 mb-3 ">
+                            <label style="font-size: small;">Adress</label>
+                            <input type="text" class="form-control"  style="font-size: small;" name="adress_ph"  value="{{pharmacist.adress_ph}}" required >
+                          </div>
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                          <div class="col-md-5 mb-3">
+                            <label style="font-size: small;" >Gender</label>
+                            <select  class="custom-select" name="sex_ph"style="font-size: small;"required value="{{pharmacist.genre_ph}}" >
+                                <option value="femal" > Female</option>
+                                <option  value="male"> Male</option>
+                              </select>
+                            </div>
+                        </div>
+                          <div class="form-row">
+                          <div class="col-md-5 mb-3">
+                            <label  style="font-size: small;">Phone Number</label>
+                            <input type="text" class="form-control" name="tel_ph" style="font-size: small;"  pattern="[0-9]{8}" value="{{pharmacist.tel_p}}" required>
+                          </div> 
+                          </div>
+                          
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <input type="submit" class="btn btn-success btn-large" value="Update" style="font-size: small;"> 
+                  </div>
+                  
+                    </form>
+                   </div>
+                    </div>
+                  </div>
+              </div>
+              {% endfor %}
+              
+
+            <!-- Add Modal-doctor -->
+            <div class="modal fade" id="addmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h4 class="modal-title" id="exampleModalLabel">Add Pharmacist</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <form method="POST" action="/home/add_pharmacist">
+                      <div class="form-row">
+                        <div class="col-md-5 mb-3">
+                            <label style="font-size: small;" >First Name</label>
+                            <input type="text" class="form-control"  style="font-size: small;" name="first_name" maxlength="50" pattern="[a-zA-Z ]*" minlength="3"  required>
+                          </div>
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                          <div class="col-md-5 mb-3">
+                            <label  style="font-size: small;">Last Name</label>
+                            <input type="text" class="form-control" style="font-size: small;" name ="last_name" maxlength="50" pattern="[a-zA-Z ]*" minlength="3"  required>
+                          </div>
+                      </div>
+                      <div class="form-row">
+                        <div class="col-md-5 mb-3 ">
+                            <label style="font-size: small;">Adress</label>
+                            <input type="text" class="form-control"  style="font-size: small;" name="adress_ph"  required >
+                          </div>
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                          <div class="col-md-5 mb-3">
+                            <label style="font-size: small;">Gender</label>
+                            <select  class="custom-select" name="sex_ph" style="font-size: small;"required >
+                                <option value="femal" > Female</option>
+                                <option  value="male"> Male</option>
+                              </select>
+                          </div>
+                        </div>
+                          <div class="form-row">
+                          <div class="col-md-5 mb-3">
+                            <label  style="font-size: small;">Phone Number</label>
+                            <input type="text" class="form-control" name="tel_ph" style="font-size: small;"  pattern="[0-9]{8}" required>
+                          </div> 
+                        </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <input type="submit" class="btn btn-success btn-large" value="Submit"> 
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </table>
+
+        <!-- button add_doc-->
+          <button  data-target="#addmodal" class="btn btn-primary" data-toggle="modal"  type="button" style="font-weight: 400; font-size: small;"><i class="fa">&#xf067;</i> Add New Pharmacist</button>
+     
+        </div>
+        
+        <footer style="position: absolute; bottom: 0%; right: 0%;  width: 88% ; height: 30px; background-color:rgb(36, 36, 36) ">
+          <center>
+          <span style="color: white; " >© 2020 Copyright: All Rights Reserved
+          </span>
+        </center>
+          
+          </footer>
+  <!-- Jquery-->
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+</html>

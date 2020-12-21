@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <title>List of Nurses</title>
+</head>
+<style>
+*{
+  margin: 0;
+  padding: 0;
+}
+.navbar{
+    background-color: #374767;
+    width: 100%;    
+    position: fixed;
+    height: 6%;
+    top: 0;
+}
+#title{
+    color:aqua;
+}
+h3{
+    color: rgb(255, 255, 255);
+}
+
+#span{
+    font-family: 'Comic Neue', cursive;
+    font-size: 20px;
+}
+body {
+    background-color: rgba(230, 230, 250, 0.408); 
+}
+.main-sidebar {
+    position: fixed;
+    left: 0;
+    top: 6%;
+    height: 100%;
+    width: 12%;
+    background-color:rgb(51, 58, 66);
+}
+a{
+     color: white;
+}
+
+h6{
+    color: white;
+}
+a:hover{    
+    color: rgb(191, 210, 221);
+}
+.img{
+    height: 70px;
+    background-color: #009688;;
+    }
+p{
+    font-size: 15px;
+    color: black;
+    font-weight: 600;
+    font-style: italic;
+ }
+.list-group {
+  list-style-type: none;
+font-size: medium;
+letter-spacing: 0.2em;
+font-weight: 500;
+}
+.log-out{
+  position: fixed;
+  bottom: 0;
+}
+a:hover{
+color: aqua;
+text-decoration: none;
+}
+.list-group> a:hover{
+  transform: scale(1.1); 
+}
+</style>
+<body>
+  <header class="navbar">
+    <!-- nav header-->
+            <h3> <span id="title"> Hospital</span> Managment</h3>
+            <form class="form-inline md-form mr-auto mb-4" style="position: absolute; right: 0%;">
+              <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-warning btn-rounded btn-sm my-0" type="submit">Search</button>
+            </form>
+</header>
+
+<!-- aside bar left-->
+<aside class="main-sidebar"  style="display: flex; flex-direction: column;">
+    
+   <div class="img">
+       <center>
+          <img src="{{ url_for('static', filename='admino.png')}}" height="50px" width="50px" >
+          <p>  <span style="color: white;"> Welcome</span></p>
+       </center>
+   </div>
+     <br>
+      <a href="/home"><i class="fa fa-home fa-fw" aria-hidden="true"></i> Home </a> 
+      <br> <br>
+      <a href=""> <i class="far fa-user-circle" aria-hidden="true"> </i> Profile</a>
+      <br><br><br> <br>
+    <div class="list-group" style="margin-left: 10px;">
+        <a href=" /home/list_doctors"><i class="fa fa-user-md"></i> Doctors </a>
+            <br><br>
+        <a href=" /home/list_nurses"> <i class='fas fa-user-nurse'></i> Nurses </a>
+        <br> <br>
+        <a href="/home/list_patients"> <i class="fa fa-wheelchair"></i> Patients</a>
+            <br><br>
+        <a href="/home/list_appointments"> <i class="fa fa-hospital-o"></i> Appointments</a>
+    </div>
+
+    <div class="log-out">
+         <a href="/logout" onclick="return confirm('Are you Sure To Log Out?')"><i class="fa fa-sign-out" style="font-size:48px;color:red"></i></a>
+    </div>
+</aside>
+    <hr>
+   
+     
+        </div>
+        <footer style="position: absolute; bottom: 0%; right: 0%; background-color: rgba(139, 36, 36, 0.856) ">
+          <span style="color: white; " >© 2020 Copyright: All Rights Reserved
+          </span>
+          </footer>
+  <!-- Jquery-->
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+</html>
