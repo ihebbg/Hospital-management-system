@@ -1,2 +1,4 @@
-node_modules
-venv
+# dependencies
+/node_modules
+#ignoring file env
+.env
