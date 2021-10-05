@@ -1,2 +1,3 @@
 # Hospital-management-system
-Develop a hospital management system using Flask(python), HTML5, CSS3, Bootstrap and MySql. 
+Développement d'une application web qui assure les fonctionnalités suivantes : authentification, gestion des médecins, gestion des infirmiers, gestion des patients, gestion des rendez-vous... et tableau de bord
+Technologies utilisés : Flask(python), MySQL, HTML5, CSS3, Bootstrap
